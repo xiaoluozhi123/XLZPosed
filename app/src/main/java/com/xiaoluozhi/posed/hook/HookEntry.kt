@@ -41,10 +41,5 @@ class HookEntry : IYukiHookXposedInit {
                 replaceUnit {  }
             }
         }
-
-        loadApp("mixiaobu.xiaobubox") {
-
-        }
-
     }
 }
