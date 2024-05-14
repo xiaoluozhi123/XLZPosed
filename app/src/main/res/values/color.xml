@@ -3,4 +3,6 @@
     <color name="colorThemeBackground">#FFFFFFFF</color>
     <color name="colorTextDark">#FF777777</color>
     <color name="colorTextGray">#FF323B42</color>
+    <color name="grey">#717171</color>
+    <color name="pink">#FF5722</color>
 </resources>

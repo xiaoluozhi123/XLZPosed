@@ -2,84 +2,49 @@
 
 package com.xiaoluozhi.posed.ui.activity
 
-import android.content.ComponentName
-import android.content.pm.PackageManager
-import androidx.core.view.isVisible
-import com.highcapable.yukihookapi.YukiHookAPI
-import com.xiaoluozhi.posed.BuildConfig
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.xiaoluozhi.posed.R
 import com.xiaoluozhi.posed.databinding.ActivityMainBinding
-import com.xiaoluozhi.posed.ui.activity.base.BaseActivity
+import com.xiaoluozhi.posed.ui.base.BaseActivity
+import com.xiaoluozhi.posed.ui.fragment.CustomHookFragment
+import com.xiaoluozhi.posed.ui.fragment.FunctionFragment
+import com.xiaoluozhi.posed.ui.fragment.HomeFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-
     override fun onCreate() {
-        refreshModuleStatus()
-        binding.mainTextVersion.text = getString(R.string.module_version, BuildConfig.VERSION_NAME)
-        binding.hideIconInLauncherSwitch.isChecked = isLauncherIconShowing.not()
-        binding.hideIconInLauncherSwitch.setOnCheckedChangeListener { button, isChecked ->
-            if (button.isPressed) hideOrShowLauncherIcon(isChecked)
+        val viewPager = binding.viewPager2
+        val bottomNavigation = binding.bottomNavigation
+
+        // 设置ViewPager
+        viewPager.adapter = object : FragmentStateAdapter(this) {
+            override fun getItemCount(): Int = 5
+            override fun createFragment(position: Int) =
+                when (position) {
+                    0 -> HomeFragment()
+                    1 -> FunctionFragment()
+                    2 -> CustomHookFragment()
+                    else -> HomeFragment()
+                }
         }
-        // Your code here.
-    }
 
-    /**
-     * Hide or show launcher icons
-     *
-     * - You may need the latest version of LSPosed to enable the function of hiding launcher
-     *   icons in higher version systems
-     *
-     * 隐藏或显示启动器图标
-     *
-     * - 你可能需要 LSPosed 的最新版本以开启高版本系统中隐藏 APP 桌面图标功能
-     * @param isShow Whether to display / 是否显示
-     */
-    private fun hideOrShowLauncherIcon(isShow: Boolean) {
-        packageManager?.setComponentEnabledSetting(
-            ComponentName(packageName, "${BuildConfig.APPLICATION_ID}.Home"),
-            if (isShow) PackageManager.COMPONENT_ENABLED_STATE_DISABLED else PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            PackageManager.DONT_KILL_APP
-        )
-    }
+        // 设置导航栏监听器
+        bottomNavigation.setOnItemSelectedListener { item ->
+            val position = when (item.itemId) {
+                R.id.home_page -> 0
+                R.id.function_page -> 1
+                R.id.custom_hook -> 2
+                else -> 0
+            }
+            viewPager.currentItem = position
+            true
+        }
 
-    /**
-     * Get launcher icon state
-     *
-     * 获取启动器图标状态
-     * @return [Boolean] Whether to display / 是否显示
-     */
-    private val isLauncherIconShowing
-        get() = packageManager?.getComponentEnabledSetting(
-            ComponentName(packageName, "${BuildConfig.APPLICATION_ID}.Home")
-        ) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-
-    /**
-     * Refresh module status
-     *
-     * 刷新模块状态
-     */
-    private fun refreshModuleStatus() {
-        binding.mainLinStatus.setBackgroundResource(
-            when {
-                YukiHookAPI.Status.isXposedModuleActive -> R.drawable.bg_green_round
-                else -> R.drawable.bg_dark_round
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                bottomNavigation.menu.getItem(position).isChecked = true
             }
-        )
-        binding.mainImgStatus.setImageResource(
-            when {
-                YukiHookAPI.Status.isXposedModuleActive -> R.mipmap.ic_success
-                else -> R.mipmap.ic_warn
-            }
-        )
-        binding.mainTextStatus.text = getString(
-            when {
-                YukiHookAPI.Status.isXposedModuleActive -> R.string.module_is_activated
-                else -> R.string.module_not_activated
-            }
-        )
-        binding.mainTextApiWay.isVisible = YukiHookAPI.Status.isXposedModuleActive
-        binding.mainTextApiWay.text = if (YukiHookAPI.Status.Executor.apiLevel > 0)
-            "Activated by ${YukiHookAPI.Status.Executor.name} API ${YukiHookAPI.Status.Executor.apiLevel}"
-        else "Activated by ${YukiHookAPI.Status.Executor.name}"
+        })
     }
 }

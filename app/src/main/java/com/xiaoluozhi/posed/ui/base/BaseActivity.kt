@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "UNCHECKED_CAST")
 
-package com.xiaoluozhi.posed.ui.activity.base
+package com.xiaoluozhi.posed.ui.base
 
 import android.os.Build
 import android.os.Bundle

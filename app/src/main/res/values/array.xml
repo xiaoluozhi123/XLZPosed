@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="module_scope">
-        <item>com.liubowang.metronome</item>
+        <item>com.dragon.read</item>
         <item>mixiaobu.xiaobubox</item>
     </string-array>
 </resources>

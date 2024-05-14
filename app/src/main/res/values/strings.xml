@@ -1,12 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">小罗纸模块</string>
     <string name="xposed_desc">小罗纸为寻方便自用的模块</string>
-    <string name="about_module">This module is made by YukiHookAPI. \nLearn more https://github.com/HighCapable/YuKiHookAPI</string>
-    <string name="module_version">Module version: %1$s</string>
-    <string name="module_not_activated">Module not activated</string>
-    <string name="module_is_activated">Module is activated</string>
-    <string name="display_settings">Display settings</string>
-    <string name="hide_app_icon_on_launcher">Hide app icons on launcher</string>
-    <string name="hide_app_icon_on_launcher_tip">After hiding the app icon, the interface may be closed and will no longer be displayed on the launcher. You can find and open the module settings in EdXposed or LSPosed.</string>
-    <string name="hide_app_icon_on_launcher_notice">Note: Be sure to turn off the \"Force apps to show launcher icons\" feature in LSPosed</string>
+    <string name="about_module">此模块使用 YukiHookAPI 构建。\n了解更多 https://github.com/HighCapable/YuKiHookAPI</string>
+    <string name="module_version">模块版本：%1$s</string>
+    <string name="module_not_activated">模块未激活</string>
+    <string name="module_is_activated">模块已激活</string>
+    <string name="display_settings">显示设置</string>
+    <string name="hide_app_icon_on_launcher">在桌面隐藏模块图标</string>
+    <string name="hide_app_icon_on_launcher_tip">隐藏模块图标后界面可能会被关闭，将不会再在桌面显示，你可以在 EdXposed、LSPosed 中找到模块设置并打开。</string>
+    <string name="hide_app_icon_on_launcher_notice">注意：请务必在 LSPosed 中关闭“强制显示桌面图标”功能</string>
+    <string name="home_page">首页</string>
+    <string name="function_page">功能</string>
+    <string name="custom_hook">自定义HOOK</string>
+    <string name="module_introduction">小罗纸自用模块</string>
+    <string name="tomato_book">番茄小说</string>
+    <string name="tomato_hook">适配版本：5.9.5及其之后所有版本</string>
+    <string name="hook_list">HOOK列表</string>
 </resources>

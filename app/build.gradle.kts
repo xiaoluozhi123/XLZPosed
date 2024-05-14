@@ -20,7 +20,10 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -57,4 +60,17 @@ dependencies {
     testImplementation(junit.junit)
     androidTestImplementation(androidx.test.ext.junit)
     androidTestImplementation(androidx.test.espresso.espresso.core)
+    // The following are optional, please add as needed
+    implementation("com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-ktx:2.1.0")
+    implementation("com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-nonreflection-ktx:2.1.0")
+    implementation("com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-base:2.1.0")
+    implementation("com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-brvah:2.1.0")
+    // coil图片加载
+    implementation("io.coil-kt:coil:2.6.0")
+    // mmkv
+    implementation("com.tencent:mmkv:1.3.4")
+    implementation("org.luckypray:dexkit:2.0.1")
+    // net
+    implementation("com.github.liangjingkanji:Net:3.6.4")
+
 }
