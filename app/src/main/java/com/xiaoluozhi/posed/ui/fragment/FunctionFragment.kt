@@ -9,5 +9,6 @@ class FunctionFragment : BaseFragment<FragmentFunctionBinding>() {
         super.initEvent()
 
         binding.tomatoBookHook.setSwitch("tomatoBookHook")
+        binding.wangcBillHook.setSwitch("wangcBillHook")
     }
 }

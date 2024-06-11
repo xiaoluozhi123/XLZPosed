@@ -16,5 +16,7 @@
     <string name="module_introduction">小罗纸自用模块</string>
     <string name="tomato_book">番茄小说</string>
     <string name="tomato_hook">适配版本：5.9.5及其之后所有版本</string>
+    <string name="wangc_bill">一木记账</string>
+    <string name="wangc_bill_hook">适配版本：5.6.9</string>
     <string name="hook_list">HOOK列表</string>
 </resources>
